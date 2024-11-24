@@ -1,0 +1,98 @@
+.pkToggleButton {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 30px;
+    right: var(--pk-offset);
+    border-radius: 100%;
+    background-color: hsl(var(--pk-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 2;
+}
+.pkWindow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+.pkChat {
+    --pk-primary: 0 43% 48%;
+    /* --pk-bg: #fff; */
+}
+.pkChat.dark {
+    --pk-primary: 0, 54%, 28%;
+}
+.pkWindow.showChat {
+    display: flex;
+}
+.pkChat.mobile .pkMinimize, .pkChat:not(.mobile) .pkMaximize {
+    display: none;
+}
+iframe#pcw.pkChatWindow {
+    flex: 1;
+    width: 100%;
+    border: none;
+}
+
+iframe#pcw.pkChatWindow.showChat {
+    display: block;
+}
+.pkWindowHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 52px;
+    background-color: hsl(var(--pk-primary));
+    transition: 0.2s;
+}
+.pkWindowHeader svg {
+    stroke: #fff;
+    height: 20px;
+    width: 20p;
+}
+.pkWindowHeader > div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.pkWindowHeader button {
+    background-color: transparent;
+    border: none;
+    display: block;
+    padding: 3px;
+    outline: none;
+    cursor: pointer;
+}
+.toggleDarkLight {
+    display: none !important;
+}
+@media(min-width: 768px) {
+    .pkChat.mobile .pkWindow {
+    background-color: #fff;
+    border-radius: 6px;
+    top: auto;
+    left: auto;
+    height: 100%;
+    width: 100%;
+    right: var(--pk-offset);
+    bottom: 90px;
+    max-width: 400px;
+    max-height: 600px;
+}
+}
+@media(max-width: 768px) {
+    .pkWindow.showChat + button.pkToggleButton {
+    display: none;
+}
+}
